@@ -9,13 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.tracelogistic.models.Usuario;
 import com.tracelogistics.db.BBDDMock;
 
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet(urlPatterns= {"/login","/"})
 public class LoginServlet extends HttpServlet {
 	private static final Logger logger=Logger.getLogger(LoginServlet.class.getName());
 	
@@ -33,9 +35,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("error", "");
-		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-//		request.getRequestDispatcher("login.jsp").forward(request, response);
+		if(request.getSession().getAttribute("user") != null) {
+			response.sendRedirect("tareas");
+		}else {
+			getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		}
 	}
 
 	/**
@@ -49,7 +53,12 @@ public class LoginServlet extends HttpServlet {
 		
 		BBDDMock bbdd=BBDDMock.getInstance();
 		
-		if(bbdd.getUser(email, pass)!=null) {
+		Usuario user=bbdd.getUser(email, pass);
+		
+		if(user!=null) {
+			HttpSession session= request.getSession();
+			session.setAttribute("user", user);
+			
 			//request.getRequestDispatcher("/tareas").forward(request, response);
 			response.sendRedirect("tareas");
 		}else {

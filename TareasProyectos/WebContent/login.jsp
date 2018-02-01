@@ -6,12 +6,13 @@
 	
 	<title>Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	
 </head>
 <body>
 	<section class="container text-center">
 		<h1>TareasProy App</h1>
-		<div class="error"><%=request.getAttribute("error")%></div>
+		
+		<div class="error">${error}</div>
+		
 		<form method="POST" action="">
 			<div class="form-group">
 				<input type="email" placeholder="Introduce tu email" name="email" />

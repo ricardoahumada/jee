@@ -105,17 +105,23 @@ public class BBDDMock {
 	
 	/*Tareas DAO*/
 	public List<Tarea> getTareasForUser(int uid) {
-		List<Tarea> resTareas=new ArrayList<Tarea>();
-		List<Tarea> tempTareas=null;
-		for (Proyecto proj : proyectos) {
-			tempTareas=proj.getTareas();
-			
-			for (Tarea tarea : tempTareas) {
-				if(tarea.getResponsable().getUid()==uid) resTareas.add(tarea);
-			}
-			
-		}
+//		List<Tarea> resTareas=new ArrayList<Tarea>();
+//		List<Tarea> tempTareas=null;
+//		for (Proyecto proj : proyectos) {
+//			tempTareas=proj.getTareas();
+//			
+//			for (Tarea tarea : tempTareas) {
+//				if(tarea.getResponsable().getUid()==uid) resTareas.add(tarea);
+//			}
+//			
+//		}
 		
-		return resTareas;
+		List<Tarea> tempTareas=new ArrayList<Tarea>();
+		int cont=0;
+		tempTareas.add(new Tarea(++cont,"Tarea "+cont, 10, 2, 14, 1, users.get(1)));
+		tempTareas.add(new Tarea(++cont, "Tarea "+cont,20, 3, 5, 2, users.get(1)));
+		tempTareas.add(new Tarea(++cont, "Tarea "+cont, 20, 22, 0, 3, users.get(1)));
+		
+		return tempTareas;
 	}
 }
