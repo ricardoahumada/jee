@@ -1,0 +1,20 @@
+.btn{
+  border-radius: 0 !important;
+}
+
+input{
+  border-radius: 0 !important;
+}
+
+
+/* Login */
+.login-section{
+	margin-top:10em;
+}
+
+.login-section h1{
+	margin-bottom: 2em;
+}
+.login-section .alert-danger{
+	margin: 1em 0;
+}

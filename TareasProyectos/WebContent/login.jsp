@@ -1,32 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	
-	<title>Login</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-	<section class="container text-center">
+<jsp:include page="./utils/head.jsp">
+	<jsp:param value="Login" name="pagetitle"/>
+</jsp:include>
+<body class="container">
+	<section class="login-section text-center col-sm-4 col-sm-offset-4">
 		<h1>TareasProy App</h1>
 		
-		<div class="error">${error}</div>
+		<div class="alert-danger">${error}</div>
 		
 		<form method="POST" action="">
 			<div class="form-group">
-				<input type="email" placeholder="Introduce tu email" name="email" />
+				<input type="email" class="form-control" placeholder="Introduce tu email" name="email" />
 			</div>
 			<div class="form-group">
-				<input type="password" placeholder="Introduce tu contraseñe" name="pass" />
+				<input type="password" class="form-control" placeholder="Introduce tu contraseÃ±a" name="pass" />
 			</div>
-			<button>Entrar</button>
+			<button class="btn btn-primary btn-lg btn-block">Entrar</button>
 		</form>
 	</section>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</html>
+<jsp:include page="./utils/foot.jsp"></jsp:include>

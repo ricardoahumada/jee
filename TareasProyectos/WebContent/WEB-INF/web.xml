@@ -7,6 +7,5 @@
   <servlet-mapping>
     <servlet-name>TareasServlet</servlet-name>
     <url-pattern>/tareas</url-pattern>
-    <url-pattern>/tareas/*</url-pattern>
   </servlet-mapping>
 </web-app>
