@@ -1,6 +1,8 @@
 package com.tracelogistic.servlets;
 
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ import com.tracelogistics.db.BBDDMock;
 @WebServlet("/tareas/borrar")
 public class BorrarTareaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger=Logger.getLogger(BorrarTareaServlet.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -27,7 +30,11 @@ public class BorrarTareaServlet extends HttpServlet {
 
 		if (request.getSession().getAttribute("user") != null) {
 			BBDDMock bbdd = BBDDMock.getInstance();
-			response.getWriter().append("{\"data\":true}");
+			int tid=request.getParameter("tid")!=null?(new Integer(request.getParameter("tid"))):0;
+			logger.info("tid:"+tid);
+			
+			if(bbdd.deleteTarea(tid)) response.getWriter().append("{\"data\":true}");
+			else response.getWriter().append("{\"data\":false}");
 		}else {
 			response.setStatus(403);
 		}

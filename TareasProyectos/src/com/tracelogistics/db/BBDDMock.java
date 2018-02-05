@@ -1,15 +1,12 @@
 package com.tracelogistics.db;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 import com.tracelogistic.models.Proyecto;
 import com.tracelogistic.models.Tarea;
 import com.tracelogistic.models.Usuario;
-import com.tracelogistic.servlets.LoginServlet;
 
 public class BBDDMock {
 	private static final Logger logger = Logger.getLogger(BBDDMock.class.getName());
@@ -117,19 +114,34 @@ public class BBDDMock {
 
 	/* Tareas DAO */
 	public List<Tarea> getTareasForUser(int uid) {
-
+		
 		List<Tarea> resTareas = new ArrayList<Tarea>();
+		List<Tarea> tempTareas = null;
+		for (Proyecto proj : proyectos) {
+			tempTareas = proj.getTareas();
+			
+			for (Tarea tarea : tempTareas) {
+				if (tarea.getResponsable().getUid() == uid)
+					resTareas.add(tarea);
+			}
+			
+		}
+		
+		return resTareas;
+	}
+	
+	public boolean deleteTarea(int tid) {
+
 		List<Tarea> tempTareas = null;
 		for (Proyecto proj : proyectos) {
 			tempTareas = proj.getTareas();
 
 			for (Tarea tarea : tempTareas) {
-				if (tarea.getResponsable().getUid() == uid)
-					resTareas.add(tarea);
+				if (tarea.getTid() == tid) {tempTareas.remove(tempTareas.indexOf(tarea)); break;}
 			}
 
 		}
 
-		return resTareas;
+		return true;
 	}
 }
