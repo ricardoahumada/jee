@@ -130,6 +130,25 @@ public class BBDDMock {
 		return resTareas;
 	}
 	
+	public Tarea getTarea(int tid) {
+		
+		List<Tarea> tempTareas = null;
+		Tarea resTarea=null;
+		for (Proyecto proj : proyectos) {
+			tempTareas = proj.getTareas();
+			
+			for (Tarea tarea : tempTareas) {
+				if (tarea.getTid() == tid) {
+					resTarea=tarea;
+					break;
+				}
+			}
+			
+		}
+		
+		return resTarea;
+	}
+	
 	public boolean deleteTarea(int tid) {
 
 		List<Tarea> tempTareas = null;
