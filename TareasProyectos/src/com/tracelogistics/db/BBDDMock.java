@@ -24,10 +24,10 @@ public class BBDDMock {
 
 	protected BBDDMock() {
 		this.populateUsers();
-//		logger.info("Users:" + Arrays.deepToString(users.toArray()));
+		// logger.info("Users:" + Arrays.deepToString(users.toArray()));
 
 		this.populateProyectos();
-//		logger.info("Proyectos:" + Arrays.deepToString(proyectos.toArray()));
+		// logger.info("Proyectos:" + Arrays.deepToString(proyectos.toArray()));
 	}
 
 	private void populateUsers() {
@@ -114,41 +114,55 @@ public class BBDDMock {
 
 	/* Tareas DAO */
 	public List<Tarea> getTareasForUser(int uid) {
-		
+
 		List<Tarea> resTareas = new ArrayList<Tarea>();
 		List<Tarea> tempTareas = null;
 		for (Proyecto proj : proyectos) {
 			tempTareas = proj.getTareas();
-			
+
 			for (Tarea tarea : tempTareas) {
 				if (tarea.getResponsable().getUid() == uid)
 					resTareas.add(tarea);
 			}
-			
+
 		}
-		
+
 		return resTareas;
 	}
-	
+
 	public Tarea getTarea(int tid) {
-		
+
 		List<Tarea> tempTareas = null;
-		Tarea resTarea=null;
+		Tarea resTarea = null;
 		for (Proyecto proj : proyectos) {
 			tempTareas = proj.getTareas();
-			
+
 			for (Tarea tarea : tempTareas) {
 				if (tarea.getTid() == tid) {
-					resTarea=tarea;
+					resTarea = tarea;
 					break;
 				}
 			}
-			
+
 		}
-		
+
 		return resTarea;
 	}
-	
+
+	public boolean addTarea(Tarea tarea, int pid) {
+
+		boolean ok=false;
+		for (Proyecto proj : proyectos) {
+			if(proj.getPid()==pid) {
+				proj.getTareas().add(tarea);
+				ok=true;
+				break;
+			}
+		}
+
+		return ok;
+	}
+
 	public boolean deleteTarea(int tid) {
 
 		List<Tarea> tempTareas = null;
@@ -156,7 +170,10 @@ public class BBDDMock {
 			tempTareas = proj.getTareas();
 
 			for (Tarea tarea : tempTareas) {
-				if (tarea.getTid() == tid) {tempTareas.remove(tempTareas.indexOf(tarea)); break;}
+				if (tarea.getTid() == tid) {
+					tempTareas.remove(tempTareas.indexOf(tarea));
+					break;
+				}
 			}
 
 		}
