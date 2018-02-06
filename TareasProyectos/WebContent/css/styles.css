@@ -18,3 +18,9 @@ input{
 .login-section .alert-danger{
 	margin: 1em 0;
 }
+
+/* tareaas */
+.list-group-item > div {
+    display: inline-block;
+    padding: 0 1em;
+}
