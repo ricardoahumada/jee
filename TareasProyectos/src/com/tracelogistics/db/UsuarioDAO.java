@@ -47,4 +47,32 @@ public class UsuarioDAO extends DAO {
 		
 		return user;
 	}
+	
+	public Usuario getUser(int uid) {
+		Usuario user=null;
+		Connection conn=null;
+		try {
+			conn=this.ds.getConnection();
+			PreparedStatement psmt= conn.prepareStatement("SELECT * FROM usuario WHERE uid=?");
+			psmt.setInt(1, uid);
+			
+			ResultSet rs= psmt.executeQuery();
+			
+			if(rs.next()) {
+				user = new Usuario();
+				user.setUid(rs.getInt("uid"));
+				user.setEmail(rs.getString("email"));
+				user.setApellido(rs.getString("apellido"));
+				user.setNombre(rs.getString("nombre"));
+			}
+			
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {if(conn!=null) conn.close();} catch (SQLException e) {e.printStackTrace();}
+		}
+		
+		return user;
+	}
 }

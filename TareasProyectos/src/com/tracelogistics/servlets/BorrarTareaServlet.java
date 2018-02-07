@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tracelogistics.db.BBDDMock;
 import com.tracelogistics.db.TareasDAO;
 
-/**
- * Servlet implementation class BorrarTareaServlet
- */
+
 @WebServlet("/tareas/borrar")
 public class BorrarTareaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,7 +31,7 @@ public class BorrarTareaServlet extends HttpServlet {
 			TareasDAO tDAO = TareasDAO.getInstance();
 			int tid=request.getParameter("tid")!=null?(new Integer(request.getParameter("tid"))):0;
 			logger.info("tid:"+tid);
-			
+						
 			if(tDAO.deleteTarea(tid)) response.getWriter().append("{\"data\":true}");
 			else response.getWriter().append("{\"data\":false}");
 		/*}else {

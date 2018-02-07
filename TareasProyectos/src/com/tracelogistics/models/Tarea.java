@@ -1,13 +1,33 @@
 package com.tracelogistics.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="tarea")
 public class Tarea {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tid;
+	@Column(name="descripcion")
 	private String descripcion;
+	@Column(name="estimado")
 	private int estimado;
+	@Column(name="dedicado")
 	private int dedicado;
+	@Column(name="restante")
 	private int restante;
+	@Column(name="estado")
 	private int estado;
+	@Transient
 	private Usuario responsable;
+	
+	public Tarea() {}
 	
 	public Tarea(int tid,String desc, int estimado, int dedicado, int restante, int estado, Usuario responsable) {
 		this.tid = tid;

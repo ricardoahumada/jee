@@ -14,6 +14,7 @@
 			<li class="list-group-item">
 				<div>${tarea.tid}</div>
 				<div>${tarea.descripcion}</div>
+				<div>${tarea.descripcion}</div>
 				<div>${tarea.estado}</div> 
 				<div>
 				<a href="./tareas/detalle?tid=${tarea.tid}"><span class="glyphicon glyphicon-eye-open"></span></a></div> 

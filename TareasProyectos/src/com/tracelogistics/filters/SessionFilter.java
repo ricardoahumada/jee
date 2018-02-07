@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.tracelogistics.servlets.LoginServlet;
 
-@WebFilter(filterName = "SessionFilter", urlPatterns = { "/tareas","/tareas/*" })
+@WebFilter(filterName = "SessionFilter", urlPatterns = { "/tareas","/tareas/*","/dashboard" })
 public class SessionFilter implements Filter {
 	private static final Logger logger=Logger.getLogger(SessionFilter.class.getName());
 	
