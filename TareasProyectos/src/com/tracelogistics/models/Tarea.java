@@ -1,4 +1,4 @@
-package com.tracelogistic.models;
+package com.tracelogistics.models;
 
 public class Tarea {
 	private int tid;

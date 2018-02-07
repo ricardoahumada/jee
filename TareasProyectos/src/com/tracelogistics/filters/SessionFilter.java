@@ -14,30 +14,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tracelogistic.servlets.LoginServlet;
+import com.tracelogistics.servlets.LoginServlet;
 
-/**
- * Servlet Filter implementation class SessionFilter
- */
-@WebFilter(filterName = "SessionFilter", urlPatterns = { "/tareas","tareas/*" })
+@WebFilter(filterName = "SessionFilter", urlPatterns = { "/tareas","/tareas/*" })
 public class SessionFilter implements Filter {
 	private static final Logger logger=Logger.getLogger(SessionFilter.class.getName());
 	
 	public SessionFilter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		logger.info("Filtrando requests...");
+		logger.info("Filtrando requests..."+request.getServletContext());
 		
 		HttpSession session = ((HttpServletRequest) request).getSession();
 
 		if (session.getAttribute("user") != null) {
 			chain.doFilter(request, response);
 		} else {
-			((HttpServletResponse)response).sendRedirect("login"); 
+			((HttpServletResponse)response).sendRedirect("/"+request.getServletContext().getContextPath()+"/login"); 
 		}
 	}
 

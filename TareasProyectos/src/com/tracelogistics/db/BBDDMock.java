@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.tracelogistic.models.Proyecto;
-import com.tracelogistic.models.Tarea;
-import com.tracelogistic.models.Usuario;
+import com.tracelogistics.models.Proyecto;
+import com.tracelogistics.models.Tarea;
+import com.tracelogistics.models.Usuario;
 
 public class BBDDMock {
 	private static final Logger logger = Logger.getLogger(BBDDMock.class.getName());

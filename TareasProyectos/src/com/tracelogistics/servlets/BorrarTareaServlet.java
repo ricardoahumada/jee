@@ -1,4 +1,4 @@
-package com.tracelogistic.servlets;
+package com.tracelogistics.servlets;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tracelogistics.db.BBDDMock;
+import com.tracelogistics.db.TareasDAO;
 
 /**
  * Servlet implementation class BorrarTareaServlet
@@ -28,16 +29,16 @@ public class BorrarTareaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setHeader("Content-Type", "application/json");
 
-		if (request.getSession().getAttribute("user") != null) {
-			BBDDMock bbdd = BBDDMock.getInstance();
+//		if (request.getSession().getAttribute("user") != null) {
+			TareasDAO tDAO = TareasDAO.getInstance();
 			int tid=request.getParameter("tid")!=null?(new Integer(request.getParameter("tid"))):0;
 			logger.info("tid:"+tid);
 			
-			if(bbdd.deleteTarea(tid)) response.getWriter().append("{\"data\":true}");
+			if(tDAO.deleteTarea(tid)) response.getWriter().append("{\"data\":true}");
 			else response.getWriter().append("{\"data\":false}");
-		}else {
+		/*}else {
 			response.setStatus(403);
-		}
+		}*/
 
 	}
 

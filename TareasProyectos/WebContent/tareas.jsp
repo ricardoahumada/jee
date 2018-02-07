@@ -1,12 +1,11 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tl" %>
 
-<jsp:include page="./utils/head.jsp">
-	<jsp:param value="Tareas" name="pagetitle"/>
-</jsp:include>
+<tl:head pagetitle="Tareas"></tl:head>
 <body class="container">
-	<jsp:include page="./utils/header.jsp">
-		<jsp:param value="tareas" name="page" />
-	</jsp:include>
+	
+	<tl:header page="tareas" style="rojo"></tl:header>
+	
 		<section>
 		<c:out value="Hola ${user.nombre},"></c:out>
 
@@ -25,7 +24,7 @@
 			</c:forEach>
 		</ul>
 	</section>
-	<footer> Pie de página </footer>
+	<tl:footer></tl:footer>
 
 </body>
 <jsp:include page="./utils/foot.jsp"></jsp:include>

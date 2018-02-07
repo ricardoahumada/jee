@@ -1,4 +1,4 @@
-package com.tracelogistic.servlets;
+package com.tracelogistics.servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -1,15 +1,15 @@
-package com.tracelogistic.servlets;
+package com.tracelogistics.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tracelogistic.models.Usuario;
-import com.tracelogistics.db.BBDDMock;
+import com.tracelogistics.db.TareasDAO;
+import com.tracelogistics.models.Usuario;
 
 /**
  * Servlet implementation class TareasServlet
@@ -24,13 +24,13 @@ public class TareasServlet extends HttpServlet {
 		Usuario myuser=session.getAttribute("user")!=null?(Usuario)session.getAttribute("user"):null;
 		
 		if( myuser!= null) {
-			BBDDMock bbdd=BBDDMock.getInstance();
+			TareasDAO tDAO= TareasDAO.getInstance();
 			
-			request.setAttribute("tareas", bbdd.getTareasForUser(myuser.getUid()) );
+			request.setAttribute("tareas", tDAO.getTareasForUser(myuser.getUid()) );
 			request.getRequestDispatcher("tareas.jsp").forward(request, response);
-		}else {
+		}/*else {
 			response.sendRedirect("logout");
-		}
+		}*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

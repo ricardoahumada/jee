@@ -1,4 +1,4 @@
-package com.tracelogistic.models;
+package com.tracelogistics.models;
 
 public class Usuario {
 	public int uid;
@@ -7,6 +7,8 @@ public class Usuario {
 	public String email;
 	public String password;
 
+	public Usuario() {}
+	
 	public Usuario(int uid, String nombre, String apellido, String email, String password) {
 		this.uid = uid;
 		this.nombre = nombre;
