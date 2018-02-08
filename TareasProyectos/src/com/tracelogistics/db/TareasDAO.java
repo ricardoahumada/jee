@@ -18,7 +18,6 @@ import com.tracelogistics.models.Tarea;
 public class TareasDAO extends DAO {
 	private static final Logger logger = Logger.getLogger(TareasDAO.class.getName());
 	private static TareasDAO instance = null;
-	private static EntityManagerFactory emf;
 
 	public static TareasDAO getInstance() {
 		emf = Persistence.createEntityManagerFactory("com.trace.punit.Projects");
@@ -40,8 +39,8 @@ public class TareasDAO extends DAO {
 	}
 
 	public boolean deleteTarea(int tid) {
-		EntityManager em = emf.createEntityManager();
-
+		EntityManager em = this.emf.createEntityManager();
+		
 		Tarea tareaABorrar = em.find(Tarea.class, new Integer(tid));
 		if (tareaABorrar != null) {
 			em.getTransaction().begin();

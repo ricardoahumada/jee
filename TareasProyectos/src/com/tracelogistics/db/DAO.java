@@ -4,13 +4,16 @@ import java.util.logging.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.sql.DataSource;
 
 public class DAO {
 	private static Logger logger = Logger.getLogger("DAO");
 
-	public DataSource ds;
-
+	public static DataSource ds;
+	public static EntityManagerFactory emf;
+	
 	protected DAO() {
 		try{
 			Context initContext = new InitialContext();
@@ -20,6 +23,7 @@ public class DAO {
 			logger.info("Error al instanciar Datasource!!!!");
 			e.printStackTrace();
 		}
-
+		
+		emf = Persistence.createEntityManagerFactory( "com.trace.punit.Projects" );
 	}
 }

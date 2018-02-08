@@ -7,7 +7,7 @@
 	<tl:header page="tareas" style="rojo"></tl:header>
 	
 		<section>
-		<c:out value="Hola ${user.nombre},"></c:out>
+		<c:out value="Hola ${user.nombre}, aquí tienes tus tareas:"></c:out>
 
 		<ul class="list-group">
 			<c:forEach items="${tareas}" var="tarea">
