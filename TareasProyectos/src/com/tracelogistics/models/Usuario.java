@@ -1,6 +1,8 @@
 package com.tracelogistics.models;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable{
 	public int uid;
 	public String nombre;
 	public String apellido;

@@ -14,6 +14,16 @@
 			<li class="list-group-item">
 				<div>${proj.pid}</div>
 				<div>${proj.titulo}</div>
+				<br />
+				<div>
+					<h4>Tareas:</h4>
+					<ul>
+					<c:forEach items="${proj.tareas}" var="tarea">
+						<li>${tarea.tid} | ${tarea.descripcion}</li>
+					</c:forEach>
+					</ul>
+				</div>
+				
 			</li>
 			</c:forEach>
 		</ul>

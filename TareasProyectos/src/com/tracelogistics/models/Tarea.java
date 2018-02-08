@@ -1,5 +1,7 @@
 package com.tracelogistics.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="tarea")
-public class Tarea {
+public class Tarea implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tid;

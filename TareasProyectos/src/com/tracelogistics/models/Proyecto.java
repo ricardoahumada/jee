@@ -1,5 +1,6 @@
 package com.tracelogistics.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "proyecto")
-public class Proyecto {
+public class Proyecto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pid; 
@@ -28,7 +29,7 @@ public class Proyecto {
 	@Column(name = "propietario")
 	private int propietario;
 	
-	@OneToMany(cascade=CascadeType.ALL,targetEntity=Tarea.class,fetch=FetchType.LAZY)
+	@OneToMany(cascade=CascadeType.ALL,targetEntity=Tarea.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="proyecto")
 	private List<Tarea> tareas;
 	

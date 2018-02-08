@@ -40,6 +40,21 @@
 			
 		</div>
 	</section>
+	
+	<section class="col-lg-6">
+		<h2>Tus proyectos</h2>
+		<div>
+			<ul class="list-group">
+				<c:forEach items='${datos_dashboard["lista_proyectos_usuario"]}' var="proj">
+					<li class="list-group-item">
+						<div>${proj.pid}</div>
+						<div>${proj.titulo}</div>
+					</li>
+				</c:forEach>
+			</ul>
+			
+		</div>
+	</section>
 
 </body>
 <jsp:include page="./utils/foot.jsp"></jsp:include>

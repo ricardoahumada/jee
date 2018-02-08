@@ -32,6 +32,8 @@ public class ProyectosDAO extends DAO {
 		List<Proyecto> plist = em.createQuery("SELECT p FROM Proyecto p WHERE propietario=:uid")
 				.setParameter("uid", uid).getResultList();
 		em.close();
+		
+		logger.info("Proyectos:"+plist.get(0).getTareas());
 
 		return plist;
 	}

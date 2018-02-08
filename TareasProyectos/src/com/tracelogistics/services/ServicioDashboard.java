@@ -3,6 +3,7 @@ package com.tracelogistics.services;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import com.tracelogistics.db.ProyectosDAO;
 import com.tracelogistics.db.TareasDAO;
 import com.tracelogistics.db.UsuarioDAO;
 
@@ -25,6 +26,10 @@ public class ServicioDashboard {
 
 		TareasDAO tDAO = TareasDAO.getInstance();
 		hash.put("lista_tareas_usuario", tDAO.getTareasForUser(uid));
+		
+		ProyectosDAO pDAO = ProyectosDAO.getInstance();
+		hash.put("lista_proyectos_usuario", pDAO.getUserProjects(uid));
+		
 		
 		logger.info("Hashmap dashboard:"+hash);
 		
